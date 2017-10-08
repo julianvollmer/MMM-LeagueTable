@@ -34,20 +34,23 @@ Module.register("MMM-LeagueTable",{
           for (var i = 0; i < this.leagueTableItem.length; i++) {
               var row = document.createElement("tr");
               var position = document.createElement("td");
-              var logo = document.createElement("td");
               position.style.width = '30px';
               position.innerHTML = this.leagueTableItem[i].position;
               position.className = "title bright";
-              var teanName = document.createElement("td");
-              teanName.style.width = '200px';
-              teanName.innerHTML = this.leagueTableItem[i].teamName;
-              teanName.className = "title bright";
+              var  logo= document.createElement("img");
+              logo.src = this.leagueTableItem[i].imgUrl;
+              logo.className = "logo";
+              var teamName = document.createElement("td");
+              teamName.style.width = '220px';
+              teamName.innerHTML = this.leagueTableItem[i].teamName;
+              teamName.className = "title bright";
               var points = document.createElement("td");
               points.style.width = '30px';
               points.innerHTML = this.leagueTableItem[i].points;
               points.className = "title bright";
               row.appendChild(position);
-              row.appendChild(teanName);
+              row.appendChild(logo);
+              row.appendChild(teamName);
               row.appendChild(points);
               wrapper.appendChild(row);
           }
@@ -63,5 +66,9 @@ Module.register("MMM-LeagueTable",{
 
     update: function () {
         this.sendSocketNotification("UPDATEUI", "options");
-    }
+    },
+    getStyles: function() {
+      return ["leagueTable.css"];
+    },
+  
 });
