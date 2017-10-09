@@ -33,6 +33,10 @@ module.exports = NodeHelper.create({
         self.sendSocketNotification("UPDATEUI", "options");
         setTimeout(function() {
         	var table = fball.leagueTable.getTable();
+			for (var i = table.length - 1; i >= 0; i--) {
+				var item = table[i];
+				item.teamName = fball.team.getShortNameFromLongName(item.teamName);
+			}
         	table.sort(fball.helper.sortBy('position', false, parseInt));
         	self.sendSocketNotification("GET_LEAGUETABLE", table);
         }, 20000);

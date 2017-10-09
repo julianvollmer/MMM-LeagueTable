@@ -41,7 +41,7 @@ Module.register("MMM-LeagueTable",{
               logo.src = this.leagueTableItem[i].imgUrl;
               logo.className = "logo";
               var teamName = document.createElement("td");
-              teamName.style.width = '220px';
+              // teamName.style.width = '220px';
               teamName.innerHTML = this.leagueTableItem[i].teamName;
               teamName.className = "title bright";
               var points = document.createElement("td");
